@@ -221,36 +221,56 @@
                     <td class="field-name">First Order Date</td>
                     <td><span class="tag tag-reference">REFERENCE</span></td>
                     <td><code>projects.first_order_date</code></td>
-                    <td><div class="formula">MIN(orders.created_at::date)</div>Aggregated in DAG</td>
+                    <td><div class="formula">MIN(orders.created_at::date)</div>
+                        <strong>DAG:</strong> <code>sync_projects</code><br>
+                        <strong>Task:</strong> <code>house_sync_order_metrics</code><br>
+                        <strong>Schedule:</strong> @hourly<br>
+                        <strong>Query:</strong> Aggregates from orders table grouped by project_id
+                    </td>
                     <td>Date of first order in project</td>
-                    <td><span class="success-icon">✓</span> Calculated in DAG</td>
+                    <td><span class="success-icon">✓</span> Pre-aggregated in projects table</td>
                 </tr>
 
                 <tr>
                     <td class="field-name">Last Order Date</td>
                     <td><span class="tag tag-reference">REFERENCE</span></td>
                     <td><code>projects.last_order_date</code></td>
-                    <td><div class="formula">MAX(orders.created_at::date)</div>Aggregated in DAG</td>
+                    <td><div class="formula">MAX(orders.created_at::date)</div>
+                        <strong>DAG:</strong> <code>sync_projects</code><br>
+                        <strong>Task:</strong> <code>house_sync_order_metrics</code><br>
+                        <strong>Schedule:</strong> @hourly<br>
+                        <strong>Query:</strong> Aggregates from orders table grouped by project_id
+                    </td>
                     <td>Date of most recent order in project</td>
-                    <td><span class="success-icon">✓</span> Calculated in DAG</td>
+                    <td><span class="success-icon">✓</span> Pre-aggregated in projects table</td>
                 </tr>
 
                 <tr>
                     <td class="field-name">Order Count</td>
                     <td><span class="tag tag-reference">REFERENCE</span></td>
                     <td><code>projects.order_count</code></td>
-                    <td><div class="formula">COUNT(*)</div>Aggregated in DAG</td>
+                    <td><div class="formula">COUNT(*)</div>
+                        <strong>DAG:</strong> <code>sync_projects</code><br>
+                        <strong>Task:</strong> <code>house_sync_order_metrics</code><br>
+                        <strong>Schedule:</strong> @hourly<br>
+                        <strong>Query:</strong> Counts all orders grouped by project_id
+                    </td>
                     <td>Total number of orders in project</td>
-                    <td><span class="success-icon">✓</span> Calculated in DAG</td>
+                    <td><span class="success-icon">✓</span> Pre-aggregated in projects table</td>
                 </tr>
 
                 <tr>
                     <td class="field-name">PO Count</td>
                     <td><span class="tag tag-reference">REFERENCE</span></td>
                     <td><code>projects.po_count</code></td>
-                    <td><div class="formula">COUNT(DISTINCT po.increment_id)</div>Aggregated in DAG</td>
+                    <td><div class="formula">COUNT(DISTINCT po.increment_id)</div>
+                        <strong>DAG:</strong> <code>sync_projects</code><br>
+                        <strong>Task:</strong> <code>house_sync_order_metrics</code><br>
+                        <strong>Schedule:</strong> @hourly<br>
+                        <strong>Query:</strong> Counts distinct PO increment_ids from purchase_orders grouped by project_id
+                    </td>
                     <td>Total number of purchase orders in project</td>
-                    <td><span class="success-icon">✓</span> Calculated in DAG</td>
+                    <td><span class="success-icon">✓</span> Pre-aggregated in projects table</td>
                 </tr>
 
                 <tr>
@@ -645,7 +665,13 @@
 
             <p><strong>Key Data Sources:</strong></p>
             <ul>
-                <li><code>projects</code> - Pre-aggregated project metadata from sync DAG</li>
+                <li><code>projects</code> - Pre-aggregated project metadata from <strong>sync_projects DAG</strong> (runs @hourly)
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Aggregates: first_order_date, last_order_date, order_count, po_count</li>
+                        <li>Source: <code>airflow/dags/b2b/sync_projects.py</code></li>
+                        <li>Task: <code>house_sync_order_metrics</code></li>
+                    </ul>
+                </li>
                 <li><code>orders</code> + <code>order_items</code> - Customer order revenue</li>
                 <li><code>refunds</code> - Customer credits and refunds</li>
                 <li><code>po_profit</code> - <strong>VALIDATED</strong> vendor costs and credits (all COST fields - V2 update)</li>
@@ -659,7 +685,7 @@
                 <li>All COST data sourced from <strong>finance-validated</strong> <code>po_profit</code> table (V2 update)</li>
                 <li>Shipping margin includes both inbound (vendor) and outbound (carrier) costs</li>
                 <li>All percentages return 0 when denominator is 0 (using NULLIF)</li>
-                <li>Project data is pre-aggregated in DAG for performance</li>
+                <li>Project metadata (order counts, dates) is <strong>pre-aggregated hourly</strong> via <code>sync_projects</code> DAG for performance - data may be up to 1 hour stale</li>
             </ul>
 
             <p><strong>Outstanding TODO Items:</strong></p>
