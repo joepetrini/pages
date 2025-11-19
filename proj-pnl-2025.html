@@ -16,7 +16,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 1800px;
+            max-width: 2000px;
             margin: 0 auto;
             background-color: white;
             padding: 40px;
@@ -39,100 +39,6 @@
             border-radius: 6px;
             font-size: 24px;
         }
-        .field-card {
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-            transition: all 0.3s ease;
-        }
-        .field-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-            transform: translateY(-2px);
-        }
-        .field-name {
-            font-size: 22px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 15px;
-            font-family: 'Courier New', monospace;
-            background-color: #f0f3ff;
-            padding: 10px 15px;
-            border-radius: 6px;
-            border-left: 4px solid #667eea;
-        }
-        .field-section {
-            margin: 15px 0;
-            padding: 15px;
-            background-color: white;
-            border-radius: 6px;
-            border: 1px solid #e8e8e8;
-        }
-        .label {
-            font-weight: 700;
-            color: #2c3e50;
-            display: inline-block;
-            min-width: 140px;
-            margin-bottom: 8px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .value {
-            color: #34495e;
-            line-height: 1.6;
-        }
-        .code {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', Consolas, monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            margin: 10px 0;
-            border-left: 4px solid #667eea;
-        }
-        .dag-info {
-            background-color: #e8f5e9;
-            border-left: 4px solid #4caf50;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-        .warehouse-info {
-            background-color: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-        .source-info {
-            background-color: #ffebee;
-            border-left: 4px solid #f44336;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-        .loome-info {
-            background-color: #e1f5fe;
-            border-left: 4px solid #03a9f4;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-        .calc-badge {
-            display: inline-block;
-            background-color: #9b59b6;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
         .summary {
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             border: 2px solid #2196f3;
@@ -144,41 +50,188 @@
             margin-top: 0;
             color: #1565c0;
         }
-        .field-type {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-left: 10px;
-            text-transform: uppercase;
+        .summary p {
+            margin: 8px 0;
         }
-        .type-reference { background-color: #e3f2fd; color: #1976d2; }
-        .type-revenue { background-color: #e8f5e9; color: #388e3c; }
-        .type-cost { background-color: #ffebee; color: #d32f2f; }
-        .type-calculated { background-color: #f3e5f5; color: #7b1fa2; }
-        .type-loome { background-color: #e1f5fe; color: #03a9f4; }
-        table {
+
+        /* Main fields table */
+        .fields-table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .fields-table {
             width: 100%;
             border-collapse: collapse;
             background-color: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin: 20px 0;
+            font-size: 13px;
         }
-        th {
+        .fields-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .fields-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        .fields-table th:last-child {
+            border-right: none;
+        }
+        .fields-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .fields-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        .fields-table tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Category badges */
+        .category-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 6px;
+        }
+        .cat-reference { background-color: #e3f2fd; color: #1976d2; }
+        .cat-revenue { background-color: #e8f5e9; color: #388e3c; }
+        .cat-cost { background-color: #ffebee; color: #d32f2f; }
+        .cat-calculated { background-color: #f3e5f5; color: #7b1fa2; }
+        .cat-loome { background-color: #e1f5fe; color: #03a9f4; }
+        .cat-debug { background-color: #fff3e0; color: #f57c00; }
+
+        /* Field name styling */
+        .field-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        /* Source info pills */
+        .source-pill {
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin: 2px;
+            font-family: monospace;
+        }
+        .source-loome { background-color: #e1f5fe; color: #01579b; }
+        .source-house { background-color: #ffebee; color: #b71c1c; }
+        .source-warehouse { background-color: #fff3e0; color: #e65100; }
+
+        /* Code snippets */
+        .code-inline {
+            background-color: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #c7254e;
+        }
+
+        /* Category summary table */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .summary-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
             text-align: left;
             font-weight: 600;
         }
-        td {
-            padding: 12px 15px;
+        .summary-table td {
+            padding: 10px 12px;
             border-bottom: 1px solid #e0e0e0;
-            vertical-align: top;
         }
-        tr:hover {
+        .summary-table tr:hover {
             background-color: #f8f9fa;
+        }
+
+        /* Data flow table */
+        .dataflow-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+        .dataflow-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .dataflow-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .dataflow-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Notes section */
+        .note-section {
+            background-color: #e1f5fe;
+            border-left: 4px solid #03a9f4;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .note-section h3 {
+            color: #01579b;
+            margin-top: 0;
+            font-size: 16px;
+        }
+        .note-section ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .note-section li {
+            margin: 5px 0;
+        }
+
+        .warning-section {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning-section h3 {
+            color: #856404;
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #7f8c8d;
         }
     </style>
 </head>
@@ -192,11 +245,11 @@
             <p><strong>Target Database:</strong> warehouse (PostgreSQL)</p>
             <p><strong>Primary Table:</strong> public.projects</p>
             <p><strong>Purpose:</strong> Comprehensive project-level P&L analysis with revenue (from Loome finance stats), costs (from validated po_profit), and margin calculations</p>
-            <p><strong>Major Improvement in V3:</strong> Uses pre-calculated finance stats from Loome instead of parsing JSON from invoices - 10-100x faster!</p>
+            <p><strong>Major Improvement in V3:</strong> Uses pre-calculated finance stats from Loome instead of complex joins on orders/invoices - 10-100x faster!</p>
         </div>
 
-        <h2>📋 Field Categories</h2>
-        <table>
+        <h2>📋 Field Categories Summary</h2>
+        <table class="summary-table">
             <thead>
                 <tr>
                     <th>Category</th>
@@ -248,619 +301,663 @@
             </tbody>
         </table>
 
-        <h2>🔵 Reference Fields</h2>
-
-        <div class="field-card">
-            <div class="field-name">Project ID<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Unique identifier for the project (UUID from House DB crm_opportunity table)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.project_id (uuid)
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Task:</strong> house_sync_projects (line 20-33)
-            </div>
-
-            <div class="source-info">
-                <strong>Source DB:</strong> house_postgres<br>
-                <strong>Source View:</strong> v_project_items<br>
-                <strong>Source Field:</strong> opportunity_id
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Account<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Account organization name (parent company for the project)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.account_name (varchar)
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Task:</strong> loome_project_manager (line 174-208)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome DB:</strong> loome_postgres<br>
-                <strong>Loome Tables:</strong> project → organization<br>
-                <strong>Loome Field:</strong> o.name (where o = account_organization)
-            </div>
-
-            <div class="field-section">
-                <div class="label">SQL Extract:</div>
-                <div class="code">SELECT o.name account_name
-FROM project p
-LEFT JOIN organization o ON p.account_organization_id=o.id
-INNER JOIN project_link l ON l.project_id = p.id AND l.type = 'HP'
-WHERE l.house_id IS NOT NULL</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Customer<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Customer organization name (end customer for the project)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.customer_name (varchar)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome DB:</strong> loome_postgres<br>
-                <strong>Loome Tables:</strong> project → organization<br>
-                <strong>Loome Field:</strong> co.name (where co = customer_organization)
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Project<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Project name/title</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.name (varchar)
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Task:</strong> house_sync_projects
-            </div>
-
-            <div class="source-info">
-                <strong>Source DB:</strong> house_postgres<br>
-                <strong>Source View:</strong> v_project_items<br>
-                <strong>Source Field:</strong> project_name
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Project Manager / State / Status<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Project manager name, shipping state, and project status from Loome</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.project_manager, projects.state, projects.status
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong><br>
-                • project_manager: CONCAT(u.first_name, ' ', u.last_name) from core_users<br>
-                • state: p.address->>'state' (JSONB extraction)<br>
-                • status: p.status
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">First/Last Order Date, Order Count, PO Count<span class="field-type type-reference">REFERENCE</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Order date range and counts aggregated from orders and purchase_orders tables</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.first_order_date, projects.last_order_date, projects.order_count, projects.po_count
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Tasks:</strong> house_sync_order_metrics (line 74-136), house_sync_po_projects (line 37-53)
-            </div>
-
-            <div class="field-section">
-                <div class="label">Calculation:</div>
-                <div class="code">-- From orders table
-MIN(created_at::date) first_order_date,
-MAX(created_at::date) last_order_date,
-COUNT(*) order_count
-
--- From purchase_orders table
-COUNT(DISTINCT po.increment_id) po_count</div>
-            </div>
-        </div>
-
-        <h2>💰 Revenue - Invoiced (from Loome Finance Stats)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product Revenue Invoiced<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Total product revenue from customer invoices (excludes tax, shipping, fees)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.product_revenue_invoiced (numeric 12,2)
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Task:</strong> loome_project_manager (line 174-208)<br>
-                <strong>Sync Frequency:</strong> Hourly
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong> project.daily_stat->>'product_invoiced'<br>
-                <strong>Loome Calculation:</strong> apps/finance/stats.py → _update_invoice_stats() → _update_project_stats()<br>
-                <strong>Data Flow:</strong> QuickBooks → Loome Invoice → Stats Calc → project.daily_stat → DAG → Warehouse
-            </div>
-
-            <div class="field-section">
-                <div class="label">Loome Stats Logic (stats.py lines 105-176):</div>
-                <div class="code">for item in invoice.quickbooks_json.get("Line", []):
-    account = item.get("SalesItemLineDetail", {}).get("ItemRef", {}).get("name")
-    amount = round(convert_to_float(item.get("Amount")), 2)
-
-    # Product mapping
-    if regex_isearch(["Sales", "Fixtures & Bulb", "Fixtures and Bulb"], account):
-        stats["product_invoiced"] += amount
-
-# Aggregated at project level
-for invoice in project.invoices.all():
-    project_stats["product_invoiced"] += invoice.daily_stat["product_invoiced"]</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">DAG Sync SQL:</div>
-                <div class="code">SELECT
-    l.house_id AS project_id,
-    COALESCE((p.daily_stat->>'product_invoiced')::numeric, 0) AS product_revenue_invoiced
-FROM project p
-INNER JOIN project_link l ON l.project_id = p.id AND l.type = 'HP'</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Shipping Revenue Invoiced<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Shipping charges billed to customer on invoices</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.shipping_revenue_invoiced (numeric 12,2)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong> project.daily_stat->>'shipping_invoiced'<br>
-                <strong>QB Account Mapping:</strong> "Freight", "Shipping & Handling"
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Sales Tax Invoiced<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Sales tax collected from customer on invoices</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.sales_tax_invoiced (numeric 12,2)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong> project.daily_stat->>'tax_invoiced'<br>
-                <strong>QB Account Mapping:</strong> "Sales Tax"<br>
-                <strong>Also Calculated From:</strong> invoice.total_incl_tax - invoice.total_excl_tax
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Fees Invoiced<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">All fees charged to customer (credit card fees + design fees)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.fees_invoiced (numeric 12,2)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong> project.daily_stat->>'fees_invoiced'<br>
-                <strong>Loome Calculation:</strong> credit_card_fees + design_fees
-            </div>
-
-            <div class="field-section">
-                <div class="label">Components:</div>
-                <div class="value">
-                    <strong>Credit Card Fees:</strong> QB Accounts: "Fee Income", "Credit Card Fee", "DS - Service Fees"<br>
-                    <strong>Design Fees:</strong> QB Accounts: "Professional" OR Description contains "Lighting Design"
-                </div>
-            </div>
-        </div>
-
-        <h2>💸 Revenue - Credits (from Loome Finance Stats)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product Revenue Credit<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Product refunds/credits issued to customer via credit memos</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.product_revenue_credit (numeric 12,2)
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Source:</strong> project.daily_stat->>'product_credit'<br>
-                <strong>Loome Calculation:</strong> apps/finance/stats.py → _update_credit_memo_stats() → parses QB credit memo line items
-            </div>
-
-            <div class="field-section">
-                <div class="label">Loome Stats Logic (stats.py lines 296-367):</div>
-                <div class="code">for item in credit.quickbooks_json.get("Line", []):
-    account = item.get("SalesItemLineDetail", {}).get("ItemRef", {}).get("name")
-    amount = round(convert_to_float(item.get("Amount")), 2)
-
-    # Product mapping (same as invoice)
-    if regex_isearch(["Sales", "Fixtures & Bulb", "Fixtures and Bulb"], account):
-        stats["product_credit"] += amount</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Shipping/Tax/Fees Credit<span class="field-type type-loome">FROM LOOME</span><span class="calc-badge">V3 NEW</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Shipping, tax, and fee refunds from credit memos (same mapping logic as invoiced)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.shipping_revenue_credit, projects.sales_tax_credit, projects.fees_credit
-            </div>
-
-            <div class="loome-info">
-                <strong>Loome Sources:</strong><br>
-                • shipping_credit: Same QB account mapping as shipping_invoiced<br>
-                • sales_tax_credit: QB Account "Sales Tax" OR calculated from credit.total_incl_tax - credit.total_excl_tax<br>
-                • fees_credit: Same QB account mapping as fees_invoiced
-            </div>
-        </div>
-
-        <h2>📊 Revenue - Net (Calculated in Query)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product/Shipping/Tax/Fees Revenue Net<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Net revenue after refunds for each category</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Product Revenue Net = product_revenue_invoiced - product_revenue_credit
-Shipping Revenue Net = shipping_revenue_invoiced - shipping_revenue_credit
-Sales Tax Net = sales_tax_invoiced - sales_tax_credit
-Fees Net = fees_invoiced - fees_credit</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Net Revenue<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Total net revenue (product + shipping only, excludes tax and fees per spec)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Net Revenue = (product_revenue_invoiced - product_revenue_credit) +
-              (shipping_revenue_invoiced - shipping_revenue_credit)</div>
-            </div>
-        </div>
-
-        <h2>💵 Cost - Billed (from po_profit table)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product Invoiced<span class="field-type type-cost">COST</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Total amount invoiced by vendors for products (what we pay suppliers)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> po_profit.product_invoiced → aggregated to projects (numeric)
-            </div>
-
-            <div class="source-info">
-                <strong>Source DB:</strong> house_postgres<br>
-                <strong>Source Table:</strong> finance_invoice<br>
-                <strong>Source View:</strong> v_po_profit_2025
-            </div>
-
-            <div class="field-section">
-                <div class="label">View Calculation (v_po_profit_2025 lines 23-54):</div>
-                <div class="code">sum(CASE WHEN fi.is_credit_memo = false
-    THEN fi.invoice_total - COALESCE(fi.freight, 0) - COALESCE(fi.dropship_fee, 0)
-    ELSE 0 END) AS product_invoiced
-
--- From finance_invoice table where:
--- is_validated = true
--- is_ignored = false
--- purchase_order_id IS NOT NULL</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Query Aggregation (project_pnl_query_v3.sql lines 36-56):</div>
-                <div class="code">SELECT
-    pp.project_id,
-    SUM(pp.product_invoiced) AS product_invoiced
-FROM po_profit pp
-WHERE pp.project_id IS NOT NULL
-GROUP BY pp.project_id</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Shipping/Misc Invoiced<span class="field-type type-cost">COST</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Vendor shipping charges and misc fees (tariffs, taxes, etc.)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> po_profit.shipping_invoiced, po_profit.misc_invoiced
-            </div>
-
-            <div class="field-section">
-                <div class="label">View Calculation:</div>
-                <div class="code">-- Shipping Invoiced
-sum(CASE WHEN fi.is_credit_memo = false
-    THEN COALESCE(fi.freight, 0) + COALESCE(fi.dropship_fee, 0)
-    ELSE 0 END) AS shipping_invoiced
-
--- Misc Invoiced
-sum(CASE WHEN fi.is_credit_memo = false
-    THEN COALESCE(fi.sales_tax, 0) + COALESCE(fi.misc_charge, 0) + COALESCE(fi.tariff_fee, 0)
-    ELSE 0 END) AS misc_invoiced</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Carrier Shipping<span class="field-type type-cost">COST</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Actual carrier shipping costs (UPS, FedEx, etc.) - separate from vendor charges</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> projects.carrier_shipping_cost (numeric)
-            </div>
-
-            <div class="dag-info">
-                <strong>DAG:</strong> sync_projects.py<br>
-                <strong>Task:</strong> house_sync_carrier_shipping_cost (line 138-174)
-            </div>
-
-            <div class="source-info">
-                <strong>Source DB:</strong> house_postgres<br>
-                <strong>Source Table:</strong> shipment_costs_flat<br>
-                <strong>Aggregation:</strong> SUM(amount) grouped by project_id
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Product/Shipping/Misc CM<span class="field-type type-cost">COST</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Credit memos from vendors (credits we receive from suppliers)</div>
-            </div>
-
-            <div class="warehouse-info">
-                <strong>Warehouse:</strong> po_profit.product_cm, po_profit.shipping_cm, po_profit.misc_cm
-            </div>
-
-            <div class="field-section">
-                <div class="label">View Calculation:</div>
-                <div class="code">-- Product CM
-sum(CASE WHEN fi.is_credit_memo = true
-    THEN fi.invoice_total - COALESCE(fi.freight, 0) - COALESCE(fi.dropship_fee, 0)
-    ELSE 0 END) AS product_cm
-
--- Shipping CM
-sum(CASE WHEN fi.is_credit_memo = true
-    THEN COALESCE(fi.freight, 0) + COALESCE(fi.dropship_fee, 0)
-    ELSE 0 END) AS shipping_cm
-
--- Misc CM
-sum(CASE WHEN fi.is_credit_memo = true
-    THEN COALESCE(fi.sales_tax, 0) + COALESCE(fi.misc_charge, 0) + COALESCE(fi.tariff_fee, 0)
-    ELSE 0 END) AS misc_cm</div>
-            </div>
-        </div>
-
-        <h2>📉 Cost - Net (Calculated in Query)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product/Shipping/Misc Invoiced Net<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Net costs after vendor credits (POSITIVE values = what we actually pay)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">-- CORRECTED IN V3 (removed incorrect -1 multiplication)
-Product Invoiced Net = product_invoiced - product_cm
-Shipping Invoiced Net = shipping_invoiced - shipping_cm
-Misc Invoiced Net = misc_invoiced - misc_cm
-Carrier Shipping Net = carrier_shipping (no CM offset)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Note on Sign:</div>
-                <div class="value">
-                    ✅ All values are POSITIVE (costs we pay)<br>
-                    ✅ NO (-1) multiplication needed (po_profit already stores costs as positive)<br>
-                    ✅ Example: $1,000 invoiced - $100 CM = $900 net cost (positive)
-                </div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Net Cost<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Total costs after all vendor credits</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Net Cost = (product_invoiced - product_cm) +
-            (shipping_invoiced - shipping_cm) +
-            (misc_invoiced - misc_cm) +
-            carrier_shipping</div>
-            </div>
-        </div>
-
-        <h2>📈 Gross Margin (Calculated in Query)</h2>
-
-        <div class="field-card">
-            <div class="field-name">Product/Shipping Margin Val<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Profit margin in dollars (Revenue - Cost)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Product Margin Val = (product_revenue_invoiced - product_revenue_credit) -
-                     (product_invoiced - product_cm)
-
-Shipping Margin Val = (shipping_revenue_invoiced - shipping_revenue_credit) -
-                       ((shipping_invoiced - shipping_cm) + carrier_shipping)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Example:</div>
-                <div class="value">
-                    Revenue: $1,000 - Credits: $100 = <strong>$900 Net Revenue</strong><br>
-                    Cost: $600 - CM: $50 = <strong>$550 Net Cost</strong><br>
-                    Margin: $900 - $550 = <strong>$350 Profit</strong>
-                </div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Gross Margin Val<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Total gross margin (product + shipping margins combined)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Gross Margin Val = Product Margin Val + Shipping Margin Val</div>
-            </div>
-        </div>
-
-        <div class="field-card">
-            <div class="field-name">Product/Shipping/Gross Margin Pct<span class="field-type type-calculated">CALCULATED</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">Margin as percentage of revenue (Margin / Revenue * 100)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Formula:</div>
-                <div class="code">Product Margin Pct = (Product Margin Val / Product Revenue Net) * 100
-
-Shipping Margin Pct = (Shipping Margin Val / Shipping Revenue Net) * 100
-
-Gross Margin Pct = (Gross Margin Val / (Product Rev Net + Shipping Rev Net)) * 100</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Example:</div>
-                <div class="value">
-                    Margin: $350 / Revenue: $900 = <strong>38.89% Margin</strong><br>
-                    Higher % = Better profitability
-                </div>
-            </div>
-        </div>
-
-        <h2>🐛 Debug Fields</h2>
-
-        <div class="field-card">
-            <div class="field-name">All Orders Complete<span class="field-type type-reference">DEBUG</span></div>
-
-            <div class="field-section">
-                <div class="label">Description:</div>
-                <div class="value">TRUE if all orders in project are in terminal states (complete, closed, canceled, fully_refunded)</div>
-            </div>
-
-            <div class="field-section">
-                <div class="label">Calculation:</div>
-                <div class="code">SELECT
-    project_id,
-    BOOL_AND(order_state IN ('complete', 'closed', 'canceled', 'fully_refunded')) AS all_orders_complete
-FROM orders
-WHERE project_id IS NOT NULL
-GROUP BY project_id</div>
-            </div>
+        <h2>📊 All Fields - Complete Reference</h2>
+
+        <div class="fields-table-container">
+            <table class="fields-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Field Name</th>
+                        <th style="width: 8%;">Category</th>
+                        <th style="width: 20%;">Description</th>
+                        <th style="width: 15%;">Warehouse Location</th>
+                        <th style="width: 22%;">Data Source / DAG</th>
+                        <th style="width: 20%;">Calculation / Logic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- REFERENCE FIELDS -->
+                    <tr>
+                        <td class="field-name">Project ID</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Unique identifier for the project (UUID)</td>
+                        <td><span class="code-inline">projects.project_id</span> (uuid)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            View: <span class="code-inline">v_project_items</span><br>
+                            DAG: sync_projects.py → house_sync_projects
+                        </td>
+                        <td>Source field: <span class="code-inline">opportunity_id</span> from House DB crm_opportunity</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Account</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Account organization name (parent company)</td>
+                        <td><span class="code-inline">projects.account_name</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            Table: <span class="code-inline">project → organization</span><br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>Loome field: <span class="code-inline">o.name</span> (account_organization)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Customer</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Customer organization name (end customer)</td>
+                        <td><span class="code-inline">projects.customer_name</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            Table: <span class="code-inline">project → organization</span><br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>Loome field: <span class="code-inline">co.name</span> (customer_organization)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Project</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Project name/title</td>
+                        <td><span class="code-inline">projects.name</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            View: <span class="code-inline">v_project_items</span><br>
+                            DAG: sync_projects.py → house_sync_projects
+                        </td>
+                        <td>Source field: <span class="code-inline">project_name</span></td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Project Manager</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Project manager name from Loome</td>
+                        <td><span class="code-inline">projects.project_manager</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            Table: <span class="code-inline">project → core_users</span><br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td><span class="code-inline">CONCAT(u.first_name, ' ', u.last_name)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">State</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Shipping state (US state code)</td>
+                        <td><span class="code-inline">projects.state</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>Loome: <span class="code-inline">p.address->>'state'</span> (JSONB extraction)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">First Order Date</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Date of first order in project</td>
+                        <td><span class="code-inline">projects.first_order_date</span> (date)</td>
+                        <td>
+                            <span class="source-pill source-warehouse">warehouse</span><br>
+                            DAG: sync_projects.py → house_sync_order_metrics
+                        </td>
+                        <td><span class="code-inline">MIN(created_at::date)</span> from orders table</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Last Order Date</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Date of most recent order in project</td>
+                        <td><span class="code-inline">projects.last_order_date</span> (date)</td>
+                        <td>
+                            <span class="source-pill source-warehouse">warehouse</span><br>
+                            DAG: sync_projects.py → house_sync_order_metrics
+                        </td>
+                        <td><span class="code-inline">MAX(created_at::date)</span> from orders table</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Order Count</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Total number of orders in project</td>
+                        <td><span class="code-inline">projects.order_count</span> (int)</td>
+                        <td>
+                            <span class="source-pill source-warehouse">warehouse</span><br>
+                            DAG: sync_projects.py → house_sync_order_metrics
+                        </td>
+                        <td><span class="code-inline">COUNT(*)</span> from orders table grouped by project_id</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">PO Count</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Total number of purchase orders in project</td>
+                        <td><span class="code-inline">projects.po_count</span> (int)</td>
+                        <td>
+                            <span class="source-pill source-warehouse">warehouse</span><br>
+                            DAG: sync_projects.py → house_sync_order_metrics
+                        </td>
+                        <td><span class="code-inline">COUNT(DISTINCT po.increment_id)</span> from purchase_orders</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Status</td>
+                        <td><span class="category-badge cat-reference">Reference</span></td>
+                        <td>Project status from Loome</td>
+                        <td><span class="code-inline">projects.status</span> (varchar)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>Loome field: <span class="code-inline">p.status</span></td>
+                    </tr>
+
+                    <!-- REVENUE - INVOICED -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Revenue Invoiced</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Total product revenue from customer invoices (excludes tax, shipping, fees)</td>
+                        <td><span class="code-inline">projects.product_revenue_invoiced</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome Invoice → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'product_invoiced'</span><br>
+                            Stats: apps/finance/stats.py → _update_invoice_stats()<br>
+                            QB Accounts: "Sales", "Fixtures & Bulb"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Revenue Invoiced</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Shipping charges billed to customer on invoices</td>
+                        <td><span class="code-inline">projects.shipping_revenue_invoiced</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome Invoice → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'shipping_invoiced'</span><br>
+                            QB Accounts: "Freight", "Shipping & Handling"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Sales Tax Invoiced</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Sales tax collected from customer on invoices</td>
+                        <td><span class="code-inline">projects.sales_tax_invoiced</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome Invoice → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'tax_invoiced'</span><br>
+                            QB Account: "Sales Tax" OR calc: total_incl_tax - total_excl_tax
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Fees Invoiced</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>All fees charged to customer (credit card fees + design fees)</td>
+                        <td><span class="code-inline">projects.fees_invoiced</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome Invoice → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'fees_invoiced'</span><br>
+                            Calc: credit_card_fees + design_fees<br>
+                            QB Accounts: "Fee Income", "Credit Card Fee", "Professional"
+                        </td>
+                    </tr>
+
+                    <!-- REVENUE - CREDITS -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Revenue Credit</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Product refunds/credits issued to customer via credit memos</td>
+                        <td><span class="code-inline">projects.product_revenue_credit</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome CreditMemo → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'product_credit'</span><br>
+                            Stats: apps/finance/stats.py → _update_credit_memo_stats()<br>
+                            QB Accounts: "Sales", "Fixtures & Bulb" (same as invoice)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Revenue Credit</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Shipping refunds from credit memos</td>
+                        <td><span class="code-inline">projects.shipping_revenue_credit</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome CreditMemo → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'shipping_credit'</span><br>
+                            QB Accounts: "Freight", "Shipping & Handling"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Sales Tax Credit</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Sales tax refunds from credit memos</td>
+                        <td><span class="code-inline">projects.sales_tax_credit</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome CreditMemo → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'credit_memo_tax_refunded'</span><br>
+                            QB Account: "Sales Tax"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Fees Credit</td>
+                        <td><span class="category-badge cat-loome">Revenue</span></td>
+                        <td>Fee refunds from credit memos</td>
+                        <td><span class="code-inline">projects.fees_credit</span> (numeric 12,2)</td>
+                        <td>
+                            <span class="source-pill source-loome">loome_postgres</span><br>
+                            QuickBooks → Loome CreditMemo → Stats Calc<br>
+                            DAG: sync_projects.py → loome_project_manager
+                        </td>
+                        <td>
+                            Loome: <span class="code-inline">p.daily_stat->>'fees_credit'</span><br>
+                            QB Accounts: Same as fees_invoiced
+                        </td>
+                    </tr>
+
+                    <!-- REVENUE - NET (CALCULATED) -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Revenue Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net product revenue after refunds</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">product_revenue_invoiced - product_revenue_credit</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Revenue Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net shipping revenue after refunds</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">shipping_revenue_invoiced - shipping_revenue_credit</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Sales Tax Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net sales tax after refunds</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">sales_tax_invoiced - sales_tax_credit</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Fees Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net fees after refunds</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">fees_invoiced - fees_credit</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Net Revenue</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Total net revenue (product + shipping only, excludes tax and fees per spec)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(product_revenue_invoiced - product_revenue_credit) + (shipping_revenue_invoiced - shipping_revenue_credit)</span>
+                        </td>
+                    </tr>
+
+                    <!-- COST - BILLED -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Invoiced</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Total amount invoiced by vendors for products (what we pay suppliers)</td>
+                        <td><span class="code-inline">po_profit.product_invoiced</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025<br>
+                            Query aggregates by project_id
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = false THEN invoice_total - freight - dropship_fee END)</span><br>
+                            Filters: is_validated=true, is_ignored=false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Invoiced</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Vendor shipping charges (freight + dropship fees)</td>
+                        <td><span class="code-inline">po_profit.shipping_invoiced</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = false THEN freight + dropship_fee END)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Misc Invoiced</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Misc vendor fees (tariffs, taxes, misc charges)</td>
+                        <td><span class="code-inline">po_profit.misc_invoiced</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = false THEN sales_tax + misc_charge + tariff_fee END)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Carrier Shipping</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Actual carrier shipping costs (UPS, FedEx, etc.) - separate from vendor charges</td>
+                        <td><span class="code-inline">projects.carrier_shipping_cost</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: shipment_costs_flat<br>
+                            DAG: sync_projects.py → house_sync_carrier_shipping_cost
+                        </td>
+                        <td>
+                            Aggregation:<br>
+                            <span class="code-inline">SUM(amount)</span> grouped by project_id<br>
+                            Filter: ignored_at IS NULL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Product CM</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Product credit memos from vendors (credits we receive from suppliers)</td>
+                        <td><span class="code-inline">po_profit.product_cm</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = true THEN invoice_total - freight - dropship_fee END)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping CM</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Shipping credit memos from vendors</td>
+                        <td><span class="code-inline">po_profit.shipping_cm</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = true THEN freight + dropship_fee END)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Misc CM</td>
+                        <td><span class="category-badge cat-cost">Cost</span></td>
+                        <td>Misc credit memos from vendors</td>
+                        <td><span class="code-inline">po_profit.misc_cm</span> (numeric)</td>
+                        <td>
+                            <span class="source-pill source-house">house_postgres</span><br>
+                            Table: finance_invoice<br>
+                            View: v_po_profit_2025
+                        </td>
+                        <td>
+                            View calc:<br>
+                            <span class="code-inline">SUM(CASE WHEN is_credit_memo = true THEN sales_tax + misc_charge + tariff_fee END)</span>
+                        </td>
+                    </tr>
+
+                    <!-- COST - NET (CALCULATED) -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Invoiced Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net product costs after vendor credits (POSITIVE = what we actually pay)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">product_invoiced - product_cm</span><br>
+                            ✅ All values POSITIVE (no -1 multiplication)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Invoiced Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net shipping costs after vendor credits</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">shipping_invoiced - shipping_cm</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Misc Invoiced Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Net misc costs after vendor credits</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">misc_invoiced - misc_cm</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Carrier Shipping Net</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Carrier shipping (no CM offset available)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">carrier_shipping</span> (same as gross)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Net Cost</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Total costs after all vendor credits</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(product_invoiced - product_cm) + (shipping_invoiced - shipping_cm) + (misc_invoiced - misc_cm) + carrier_shipping</span>
+                        </td>
+                    </tr>
+
+                    <!-- GROSS MARGIN (CALCULATED) -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">Product Margin Val</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Product profit margin in dollars (Revenue - Cost)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(product_revenue_invoiced - product_revenue_credit) - (product_invoiced - product_cm)</span><br>
+                            Example: $900 rev - $550 cost = $350 margin
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Margin Val</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Shipping profit margin in dollars</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(shipping_revenue_invoiced - shipping_revenue_credit) - ((shipping_invoiced - shipping_cm) + carrier_shipping)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Gross Margin Val</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Total gross margin (product + shipping margins combined)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">Product Margin Val + Shipping Margin Val</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Product Margin Pct</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Product margin as percentage of revenue</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(Product Margin Val / Product Revenue Net) * 100</span><br>
+                            Example: $350 / $900 = 38.89%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Shipping Margin Pct</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Shipping margin as percentage of revenue</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(Shipping Margin Val / Shipping Revenue Net) * 100</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Gross Margin Pct</td>
+                        <td><span class="category-badge cat-calculated">Calculated</span></td>
+                        <td>Gross margin as percentage of total revenue</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">(Gross Margin Val / (Product Rev Net + Shipping Rev Net)) * 100</span>
+                        </td>
+                    </tr>
+
+                    <!-- DEBUG FIELDS -->
+                    <tr style="border-top: 3px solid #667eea;">
+                        <td class="field-name">All Orders Complete</td>
+                        <td><span class="category-badge cat-debug">Debug</span></td>
+                        <td>TRUE if all orders in project are in terminal states (complete, closed, canceled, fully_refunded)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">warehouse.orders</span><br>
+                            Calculated in query
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">BOOL_AND(order_state IN ('complete', 'closed', 'canceled', 'fully_refunded'))</span><br>
+                            Grouped by project_id
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Pct Invoiced</td>
+                        <td><span class="category-badge cat-debug">Debug</span></td>
+                        <td>Percentage of order value that has been invoiced (TODO)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill">Not yet implemented</span>
+                        </td>
+                        <td>
+                            ⏳ TODO: Need to calculate net order value vs invoiced amount
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Has Pull From Stock</td>
+                        <td><span class="category-badge cat-debug">Debug</span></td>
+                        <td>TRUE if project has any POs with 'pull_from_stock' workflow (TODO)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill">Not yet implemented</span>
+                        </td>
+                        <td>
+                            ⏳ TODO: Check purchase_orders.workflow field for 'pull_from_stock'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Current DateStamp YYYYMMDD</td>
+                        <td><span class="category-badge cat-debug">Debug</span></td>
+                        <td>Current date in YYYYMMDD format (report run date)</td>
+                        <td><span class="code-inline">Query output only</span></td>
+                        <td>
+                            <span class="source-pill source-warehouse">Runtime calculation</span>
+                        </td>
+                        <td>
+                            Formula:<br>
+                            <span class="code-inline">TO_CHAR(CURRENT_DATE, 'YYYYMMDD')</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <h2>🔄 Data Flow Summary</h2>
 
-        <table>
+        <table class="dataflow-table">
             <thead>
                 <tr>
                     <th>Data Category</th>
@@ -911,51 +1008,47 @@ GROUP BY project_id</div>
 
         <h2>⚡ Performance Improvements in V3</h2>
 
-        <div class="summary">
-            <h3>V3 vs V2 Comparison</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Aspect</th>
-                        <th>V2 (Old)</th>
-                        <th>V3 (New)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Revenue Source</strong></td>
-                        <td>Complex joins on orders + order_items + invoices tables</td>
-                        <td>Simple read from projects table (pre-calculated)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Credit Source</strong></td>
-                        <td>Complex joins on refunds + orders tables</td>
-                        <td>Simple read from projects table (pre-calculated)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Performance</strong></td>
-                        <td>Slow (aggregations on large tables)</td>
-                        <td>10-100x faster (indexed reads only)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Accuracy</strong></td>
-                        <td>Approximate (Magento order data)</td>
-                        <td>Exact (QuickBooks invoice data)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Maintenance</strong></td>
-                        <td>Complex query logic to maintain</td>
-                        <td>Simple query, logic in Loome stats system</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="dataflow-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>V2 (Old)</th>
+                    <th>V3 (New)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Revenue Source</strong></td>
+                    <td>Complex joins on orders + order_items + invoices tables</td>
+                    <td>Simple read from projects table (pre-calculated)</td>
+                </tr>
+                <tr>
+                    <td><strong>Credit Source</strong></td>
+                    <td>Complex joins on refunds + orders tables</td>
+                    <td>Simple read from projects table (pre-calculated)</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>Slow (aggregations on large tables)</td>
+                    <td>10-100x faster (indexed reads only)</td>
+                </tr>
+                <tr>
+                    <td><strong>Accuracy</strong></td>
+                    <td>Approximate (Magento order data)</td>
+                    <td>Exact (QuickBooks invoice data)</td>
+                </tr>
+                <tr>
+                    <td><strong>Maintenance</strong></td>
+                    <td>Complex query logic to maintain</td>
+                    <td>Simple query, logic in Loome stats system</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2>⚠️ Important Notes</h2>
 
-        <div class="field-section" style="background-color: #e1f5fe; border-left: 4px solid #03a9f4;">
-            <h3 style="color: #01579b; margin-top: 0;">Loome Finance Stats System</h3>
+        <div class="note-section">
+            <h3>Loome Finance Stats System</h3>
             <p><strong>Location:</strong> Loome apps/finance/stats.py</p>
             <p><strong>Key Functions:</strong></p>
             <ul>
@@ -967,20 +1060,21 @@ GROUP BY project_id</div>
             <p><strong>Trigger:</strong> Updated automatically when invoices/CMs are synced from QuickBooks</p>
         </div>
 
-        <div class="field-section" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
-            <h3 style="color: #856404; margin-top: 0;">Data Quality Considerations</h3>
+        <div class="warning-section">
+            <h3>Data Quality Considerations</h3>
             <ul>
                 <li><strong>Cost Sign Convention:</strong> All costs are POSITIVE values (what we pay). NO (-1) multiplication needed.</li>
                 <li><strong>Single Source of Truth:</strong> Revenue data comes from Loome (QuickBooks), not Magento orders</li>
                 <li><strong>Pre-Aggregation:</strong> All revenue stats are pre-calculated in Loome for performance</li>
                 <li><strong>Deposit Handling:</strong> Loome stats exclude deposit invoices from revenue calculations</li>
                 <li><strong>Project Filter:</strong> Query filters to only show projects with revenue activity (product_revenue_invoiced > 0 OR product_revenue_credit > 0)</li>
+                <li><strong>Cost Validation:</strong> Only validated, non-ignored vendor invoices are included (is_validated=true, is_ignored=false in finance_invoice)</li>
             </ul>
         </div>
 
-        <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #ddd; text-align: center; color: #7f8c8d;">
+        <div class="footer">
             <p><strong>Report Generated:</strong> 2025-11-19</p>
-            <p>This documentation traces all fields in project_pnl_query_v3.sql from their ultimate source systems through processing pipelines to the final query output</p>
+            <p>This documentation traces all 45+ fields in project_pnl_query_v3.sql from their ultimate source systems through processing pipelines to the final query output</p>
         </div>
     </div>
 </body>
